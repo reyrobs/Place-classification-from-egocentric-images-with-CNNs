@@ -25,48 +25,34 @@ The purpose of this experiment is to see whether the use of a CNN is appropriate
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 ## Data Exploration
-Our original data set comprises of 97909 images of various locations which will represent our 24 distinct classes, taken from wearable devices throughout the world. We have included a full depiction of the data set as well as the percentage of each label in the table on the next page along with a bar plot (please refer to page 4) to better visualise the diversity of the data. The bar plot clearly indicates that the data set is highly unbalanced, whereby \textit{office} occupying a much larger proportion of the labels than the others. Referring to our tables, we can see that the \textit{office} label makes up for around 40\% of the data with about 36,000 entries, while the rest accounts for varying proportions. Additionally, we have included a collage comprising of an image from each label as a reference on what the images we will be manipulating and feeding to our model resemble, this is simply to give a better idea of the quality and image type of each image from the data set that we will be dealing with.
+Our original data set comprises of 97909 images of various locations which will represent our 24 distinct classes, taken from wearable devices throughout the world. We have included a full depiction of the data set with a bar plot to better visualise the diversity of the data. The bar plot clearly indicates that the data set is highly unbalanced, whereby the *office* class occupying a much larger proportion of the labels than the others. Additionally, we have included a collage comprising of an image from each label as a reference on what the images we will be manipulating and feeding to our model resemble, this is simply to give a better idea of the quality and image type of each image from the data set that we will be dealing with.
 
 ### Bar Plot
+<!-- ![alt text](https://github.com/reyrobs/Place-classification-from-egocentric-images-with-CNNs/blob/main/images/barPlot.png?=250x250) -->
+<img src="https://github.com/reyrobs/Place-classification-from-egocentric-images-with-CNNs/blob/main/images/barPlot.png?" width="400">
+
 
 ### Collage of image from each class
+<img src="https://github.com/reyrobs/Place-classification-from-egocentric-images-with-CNNs/blob/main/images/all.png?" width="300">
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
-## Results with imbalanced dataset
+## How CNNs work
 
-![alt text](https://github.com/reyrobs/Bank-Customer-Prediction/blob/main/images/results_imbalanced.png?raw=true)
-<br>
-The results obtained on this dataset are not as good as they seem. If we look at the overall accuracy obtained, we see that it seems rather good. However since the data is unbalanced, we see rather poor metrics obtained for the label 0, for precision, recall and f1-score. The classifier has developped a tendency to predict for label 0 since it represents a larger proportion of the labels. 
+Convolutional Neural Networks (CNNs) are a special type of Neural Networks designed to be used mainly with 2-D image data, however they can also be used with 1-D or 3-D data. The main aspect of the network are the convolutional layers, from which the network's name is derived and they perform an operation called *convolution*. When we talk about a convolution operation in the context of CNNs, we are referring to a linear operation between the input data and a 2-D filter (also known as kernel), composed of weights designed to detect specific features from the input data. The filter is much smaller than the input data and the type of multiplication between the filter and the input data is an element wise dot product operation, to which the resulting elements are then summed up in order to give a single value as final result. The filter is then moved over a different area of the input data and the same procedure is applied, until the whole input data has been covered by the filter [[1]](#1). Please refer to the figure below for a visual representation of the process:
 
-<p align="right">(<a href="#top">back to top</a>)</p>
+<img src="https://github.com/reyrobs/Place-classification-from-egocentric-images-with-CNNs/blob/main/images/CNN_filter.png?" width="400">
 
+## ResNet50 model and Transfer learning
+After the success of AlexNet at the LSVRC2012 classi-
+fication contest, deep Residual Networks have become
+increasing popular over the last few years in computer
+vision and deep learning fields. These networks are able
+to train up to hundreds of layers and achieve peak per-
+formance. One of these networks which has emerged since is the ResNet50 model which is the one we will be utilizing during our experiments. Please refer to the figure below for a break down of the network.
 
-## Results with balanced dataset
+<img src="https://github.com/reyrobs/Place-classification-from-egocentric-images-with-CNNs/blob/main/images/ResNet_Over.png?" width="700">
 
-### Method 1: Undersampling
-![alt text](https://github.com/reyrobs/Bank-Customer-Prediction/blob/main/images/under_sampling.png?raw=true)
-<br>
-Our first method to combat the unbalanced dataset gives us better results for the metrics of class 1. Although the overall accuracy has decreased, it now represents a better representation of its true value since the dataset is now balanced.  The way that this method works it rather simple, whereby we simply 
-remove the number of elements from the overpopulated label. The downside of this is that we are throwing away data that could otherwise be used for our classification. 
-### Method 2: Oversampling
-![alt text](https://github.com/reyrobs/Bank-Customer-Prediction/blob/main/images/over_sampling.png?raw=true)
-<br>
-The second method used is oversampling, which is very similar to the first method except that we increase the samples of the underrepresented class by creating duplicated samples. We can see that we obtain good metrics for each class as well as a solid accuracy.
-
-### Method 3: SMOTE
-
-![alt text](https://github.com/reyrobs/Bank-Customer-Prediction/blob/main/images/smote.png?raw=true)
-<br>
-Our last and final method is the smote method (synthetic minority oversampling technique) which essentially creates artifical samples for the underrepresented class such that the dataset now becomes balanced. This was the method which yielded the best results for both the metrics of each class as well as the overall accuracy. 
-<p align="right">(<a href="#top">back to top</a>)</p>
-
-### Confusion matrix for best method
-![alt text](https://github.com/reyrobs/Bank-Customer-Prediction/blob/main/images/confusion_matrix.png?raw=true)
-
-## Interpretation of results
-Over the course of this small project we have seen the effect of using an unbalanced dataset. This can gives a misleading accuracy since the classifier will develop a tendency to classify the overrepresented class. In order to tackle this, we have made use of 3 methods and have found that the best one in this case was the SMOTE method. 
-<p align="right">(<a href="#top">back to top</a>)</p>
 
 
 <!-- CONTACT -->
@@ -88,5 +74,4 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 
 ## References
 <a id="1">[1]</a> 
-Bank Dataset Kaggle,
-https://www.kaggle.com/datasets/barelydedicated/bank-customer-churn-modeling
+J. Brownlee, “How do convolutional layers work in deep learning neural networks?.”
