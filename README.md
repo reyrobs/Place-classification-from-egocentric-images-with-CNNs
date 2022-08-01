@@ -8,13 +8,17 @@
 <details>
   <summary>Table of Contents</summary>
   <ol>
-    <li><a href="#genereal-idea-and-approach">Genereal idea and approach</a></li>
+    <li><a href="#introduction-to-problem">Introduction to problem</a></li>
     <li><a href="#data-exploration">Data Exploration</a></li>
-    <li><a href="#results-with-imbalanced-dataset">Results with imbalanced dataset</a></li>
-    <li><a href="#results-with-balanced-dataset">Results with balanced dataset</a></li>
-    <li><a href="#interpretation-of-results">Interpretation of results</a></li>
-    <li><a href="#license">License</a></li>
+    <li><a href="#how-cnns-work">How CNNs work</a></li>
+    <li><a href="#resnet50-model">ResNet50 model</a></li>
+    <li><a href="#transfer-learning">Transfer Learning</a></li>
+    <li><a href="#preprocessing-the-initial-data">Preprocessing the initial data</a></li>
+    <li><a href="#creating-our-model">Creating our model</a></li>
+    <li><a href="#results-and-loss-curves">Results and loss curves</a></li>
+    <li><a href="#results-on-test-set">Results on test set</a></li>
     <li><a href="#contact">Contact</a></li>
+    <li><a href="#license">License</a></li>
     <li><a href="#references">References</a></li>
   </ol>
 </details>
@@ -290,12 +294,43 @@ Moving on to the class *Bedroom*, we observe that even though it was predicted c
 
 Our last section of the results will make use of Class Activation Maps (CAM). CAM is a powerful method applied in the of field Computer vision for classification tasks. It enables the users working on the classification to evaluate which section of an image contributed the most to a diagnostic when using a particular model. In other words, say we are trying to classify images of cats and dogs, and we feed an image of a dog to which the model successfully classifies it as a dog, through the use of the CAM tool, we can visualize which section of the image contributed the most to classifying it as a dog. This can be beneficial when trying to improve the accuracy of the model and deciding which layers need to be tweaked, or deciding if the preprocessing should be done differently [[5]](#5). We have included a few snapshots of how CAM was used to classify a certain image along with the original image. Please refer to them afterwards, before our interpretation of what is happening.
 
+<!--
+![alt text](https://github.com/reyrobs/Place-classification-from-egocentric-images-with-CNNs/blob/main/images/pool_orig.jpg?)
+<img src="https://github.com/reyrobs/Place-classification-from-egocentric-images-with-CNNs/blob/main/images/pool_orig.jpg?" width="400">
+<img src="https://github.com/reyrobs/Place-classification-from-egocentric-images-with-CNNs/blob/main/images/pool_CAM.png?" width="400">
+&emsp;&emsp;&emsp;&emsp;
+-->
+
+Original Image|  CAM Image
+:-------------------------:|:-------------------------:
+<img src="https://github.com/reyrobs/Place-classification-from-egocentric-images-with-CNNs/blob/main/images/pool_orig.jpg?" width="300"> | <img src="https://github.com/reyrobs/Place-classification-from-egocentric-images-with-CNNs/blob/main/images/pool_CAM.png?" width="350">
+
+Referring to the images above, we have an image which belongs to the *Sport fields* class, which the model successfully classified. If we look at the CAM image, we see that the model greatly made use of the water, represented by the color yellow in order to come up with a classification.
+
+<br>
+<br>
+
+Original Image|  CAM Image
+:-------------------------:|:-------------------------:
+<img src="https://github.com/reyrobs/Place-classification-from-egocentric-images-with-CNNs/blob/main/images/kitchen_orig.jpg?" width="300"> | <img src="https://github.com/reyrobs/Place-classification-from-egocentric-images-with-CNNs/blob/main/images/kitchen_CAM.png?" width="350">
+
+In the sample image used above, our model incorrectly classified the image as *Living room* when it belonged to the *Kitchen* class. By looking at the activation map more thoroughly, we can observe that the model focused on the center of the image, where the counter is present, in order to make a decision. It is possible that it interpreted the counter of the kitchen and what lies on top of it as a table belonging to the *Living room*. 
+
+<br>
+<br>
+
+Original Image|  CAM Image
+:-------------------------:|:-------------------------:
+<img src="https://github.com/reyrobs/Place-classification-from-egocentric-images-with-CNNs/blob/main/images/living_orig.jpg?" width="300"> | <img src="https://github.com/reyrobs/Place-classification-from-egocentric-images-with-CNNs/blob/main/images/living_CAM.png?" width="350">
+
+Our final example can be seen above, on which the model correctly classified as *Living room*. When we analyze the CAM, we see that the model made use more of the right part of the original image, where the cup is located, in order to come up with a diagnostic. 
+
 <!-- CONTACT -->
 ## Contact
 
 Robert Rey - [LinkedIn](https://www.linkedin.com/in/robert-rey-36689a103/)
 
-Project Link: [Bank-Customer-Prediction](https://github.com/reyrobs/Bank-Customer-Prediction)
+Project Link: [Place-classification-from-egocentric-images-with-CNNs](https://github.com/reyrobs/Place-classification-from-egocentric-images-with-CNNs/edit/main/README.md)
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
