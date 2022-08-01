@@ -17,6 +17,7 @@
     <li><a href="#creating-our-model">Creating our model</a></li>
     <li><a href="#results-and-loss-curves">Results and loss curves</a></li>
     <li><a href="#results-on-test-set">Results on test set</a></li>
+    <li><a href="#conclusion">Conclusion</a></li>
     <li><a href="#contact">Contact</a></li>
     <li><a href="#license">License</a></li>
     <li><a href="#references">References</a></li>
@@ -324,6 +325,10 @@ Original Image|  CAM Image
 <img src="https://github.com/reyrobs/Place-classification-from-egocentric-images-with-CNNs/blob/main/images/living_orig.jpg?" width="300"> | <img src="https://github.com/reyrobs/Place-classification-from-egocentric-images-with-CNNs/blob/main/images/living_CAM.png?" width="350">
 
 Our final example can be seen above, on which the model correctly classified as *Living room*. When we analyze the CAM, we see that the model made use more of the right part of the original image, where the cup is located, in order to come up with a diagnostic. 
+
+## Conclusion
+
+Over the course of this project, we have learnt a lot of new and intriguing concepts, such as what is deep learning and deep learning networks, transfer learning, fine tuning, semi-supervised learning and more. By getting familiar with all these concepts, we have applied our knowledge to a data set created through the use of wearable devices. As our experiment progressed, we have had to adapt and adjust our approach as we didn't foresee a variety of obstacles in a way that we believed would give the most optimal results as well as being delivered in a timely manner. Due to the nature of deep learning networks and the time at which they take to train, we have decided to focus on only using 5 of the original 24 available labels such that we could try various implementations and procedures in order to have a better understanding of the different parameters used in a deep learning network. We believe the results we obtained after modifying and applying transfer learning on the resnet50 network are very satisfactory, with an accuracy of nearly 0.80 during our testing phase. 
 
 <!-- CONTACT -->
 ## Contact
