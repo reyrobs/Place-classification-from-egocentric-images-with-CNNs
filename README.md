@@ -192,6 +192,9 @@ curves obtained.
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 ## Results on test set
+
+### Metrics scores
+
 <table>
 <thead>
   <tr>
@@ -269,6 +272,24 @@ curves obtained.
 </tbody>
 </table>
 
+From the classification report obtained above we can see that *Sport fields* performed the best in terms of scores obtained for each metric. We believe the reason for that is because *Sport fields* has very different attributes than the other classes, meaning that the model is more easily able to differentiate an image belonging to *Sport fields* than it is for the others classes. As an example an image containing a swimming pool can only belong to the *Sport fields* label, and therefore the model learns to directly attribute a swimming pool to *Sport fields*, the same idea goes for a tennis court for example. 
+<br>
+<br>
+Now that we have established why *Sport fields* achieved much better results than the other classes, let us try and depict the results that we achieved for the other classes. The results of the remaining classes don't seem to differ too much from each other, although the class *Restaurant, Bar* performed better for precision than the others. In the case of *Bedroom* and *Living room*, the two classes share similar features and so we think that this makes it more difficult for the model to differentiate between the two, thus reducing the scores obtained for each of the metrics. As far as accuracy goes, we obtained a score of 0.78, which was expected given that we made use of cross validation during training.
+
+### Confusion matrix
+
+<img src="https://github.com/reyrobs/Place-classification-from-egocentric-images-with-CNNs/blob/main/images/confusion (1).png?" width="400">
+
+Let us now go over the confusion matrix obtained above, represented with the help of a heatmap ranging from light green to dark green, whereby dark green portraying larger numbers. It is useful to note that the confusion matrix can also be related to the classification report obtained previously. First we see that the main diagonal of the matrix is of a darker color than the rest of it, which is a positive sign, this entails that each classes were predicted correctly more often than not. Starting with the class *Sport, fields* again, we have a score of 97 at the point where *Sport, fields* on both axis meet, while the rest of the points range between 1-5. This is a clear indication that the model did not have too much trouble at predicting correctly the images labelled with *Sport, fields* for the reason that we have discussed before, in other words it did not get confused with the other labels. 
+<br>
+<br>
+Moving on to the class *Bedroom*, we observe that even though it was predicted correctly 87 times out of 109, the model confused it the most with the label *Kitchen*, which came as a surprise to us since we would expect the model to confuse it the most with the label *Living room*, closely in second place. Similarly for *Kitchen*, it was wrongly predicted the most with the label *Bedroom*. However the class *Restaurant, Bar* was wrongly predicted the most with the class *Kitchen*, which doesn't come off as a surprise to us since the two share a lot of similar features. 
+
+### Class Activation Maps (CAM)
+
+Our last section of the results will make use of Class Activation Maps (CAM). CAM is a powerful method applied in the of field Computer vision for classification tasks. It enables the users working on the classification to evaluate which section of an image contributed the most to a diagnostic when using a particular model. In other words, say we are trying to classify images of cats and dogs, and we feed an image of a dog to which the model successfully classifies it as a dog, through the use of the CAM tool, we can visualize which section of the image contributed the most to classifying it as a dog. This can be beneficial when trying to improve the accuracy of the model and deciding which layers need to be tweaked, or deciding if the preprocessing should be done differently [[5]](#5). We have included a few snapshots of how CAM was used to classify a certain image along with the original image. Please refer to them afterwards, before our interpretation of what is happening.
+
 <!-- CONTACT -->
 ## Contact
 
@@ -298,3 +319,6 @@ K. S. N. Z. e. a. Peng, J., “Residual convolutional neural network for predict
 
 <a id="4">[4]</a>
 Z. Chen, J. Cen, and J. Xiong, “Rolling bearing fault diagnosis using time-frequency analysis and deep transfer convolutional neural network,”
+
+<a id="5">[5]</a>
+V. Alto, “Class activation maps in deep learning.”
